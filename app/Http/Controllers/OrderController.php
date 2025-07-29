@@ -28,16 +28,19 @@ class OrderController extends Controller
         ]);
 
         $product = Product::with('shop')->findOrFail($data['product_id']);
+        
+        $customerId = $request->user()->id;
 
         $order = Order::create([
             ...$data,
             'vendor_id' => $product->shop->vendor_id,
-            'customer_id' => $request->user()->id ?? null,
+            'customer_id' => $customerId,
             'status' => 'pending'
         ]);
 
         return response()->json($order->load('product'), 201);
     }
+
 
     public function update(Request $request, Order $order)
     {
