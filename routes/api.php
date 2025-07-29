@@ -70,6 +70,4 @@ Route::prefix('public')->group(function () {
     
     Route::get('/products/latest', [ProductController::class, 'latest']);
     Route::get('/products/{product}', [ProductController::class, 'publicShow']);
-
-    Route::post('/orders', [OrderController::class, 'store']);
 });
