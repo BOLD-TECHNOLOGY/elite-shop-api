@@ -22,7 +22,7 @@ return new class extends Migration
                 'rider',
                 'customer',
                 'user'
-            ])->default('user');
+            ])->default('customer');
             $table->string('phone')->nullable()->after('email');
             $table->enum('status', ['active', 'inactive'])->default('active')->after('role');
             $table->timestamp('email_verified_at')->nullable();
